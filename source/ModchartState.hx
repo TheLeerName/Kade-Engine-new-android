@@ -338,8 +338,10 @@ class ModchartState
 
 		var path = Sys.getCwd() + "assets/data/songs/" + PlayState.SONG.songId + '/';
 
+		#if FEATURE_STEPMANIA
 		if (PlayState.isSM)
 			path = PlayState.pathToSm + "/";
+		#end
 
 		var data:BitmapData = BitmapData.fromFile(path + spritePath + ".png");
 
@@ -421,6 +423,7 @@ class ModchartState
 				songLowercase = 'milf';
 		}
 
+		#if FEATURE_STEPMANIA
 		var path = Paths.lua('songs/${PlayState.SONG.songId}/modchart');
 		if (PlayState.isSM)
 			path = PlayState.pathToSm + "/modchart.lua";
@@ -433,6 +436,7 @@ class ModchartState
 			FlxG.switchState(new FreeplayState());
 			return;
 		}
+		#end
 
 		// get some fukin globals up in here bois
 

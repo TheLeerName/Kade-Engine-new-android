@@ -58,15 +58,14 @@ class TitleState extends MusicBeatState
 			Debug.logTrace("We loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets into the default library");
 		}
 
+		#if FEATURE_FILESYSTEM
 		#if !cpp
 		FlxG.save.bind('funkin', 'ninjamuffin99');
-
-		PlayerSettings.init();
-
 		KadeEngineData.initSave();
-		#end
-
 		Highscore.load();
+		#end
+		#end
+		PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
@@ -76,12 +75,25 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
+		#if !FEATURE_FILESYSTEM
+		// i replace this because game crashing if initialState = TitleState
+		FlxG.save.bind('funkin', 'ninjamuffin99');
+		KadeEngineData.initSave();
+		Highscore.load();
+		#end
+
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
 		clean();
 		#elseif CHARTING
 		FlxG.switchState(new ChartingState());
 		clean();
+		#else
+		#if !FEATURE_FILESYSTEM
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			startIntro();
+		});
 		#else
 		#if !cpp
 		new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -90,6 +102,7 @@ class TitleState extends MusicBeatState
 		});
 		#else
 		startIntro();
+		#end
 		#end
 		#end
 	}

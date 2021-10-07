@@ -22,7 +22,7 @@ class WaveformTestState extends FlxState
 		// fuckin stupid ass bitch ass fucking waveform
 		if (PlayState.isSM)
 		{
-			#if FEATURE_FILESYSTEM
+			#if FEATURE_STEPMANIA
 			waveform = new Waveform(0, 0, PlayState.pathToSm + "/" + PlayState.sm.header.MUSIC, 720);
 			#end
 		}

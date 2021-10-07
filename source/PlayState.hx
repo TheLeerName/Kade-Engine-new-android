@@ -330,8 +330,10 @@ class PlayState extends MusicBeatState
 		#if FEATURE_LUAMODCHART
 		// TODO: Refactor this to use OpenFlAssets.
 		executeModchart = FileSystem.exists(Paths.lua('songs/${PlayState.SONG.songId}/modchart'));
+		#if FEATURE_STEPMANIA
 		if (isSM)
 			executeModchart = FileSystem.exists(pathToSm + "/modchart.lua");
+		#end
 		if (executeModchart)
 			PlayStateChangeables.Optimize = false;
 		#end

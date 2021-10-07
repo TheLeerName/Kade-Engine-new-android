@@ -202,14 +202,66 @@ class Debug
 
 		logInfo("Debug logging initialized. Hello, developer.");
 
-		#if debug
-		logInfo("This is a DEBUG build.");
-		#else
-		logInfo("This is a RELEASE build.");
-		#end
+		logInfo("This is a" + #if debug "DEBUG" #else "RELEASE" #end + "build.");
 		logInfo('HaxeFlixel version: ${Std.string(FlxG.VERSION)}');
 		logInfo('Friday Night Funkin\' version: ${MainMenuState.gameVer}');
 		logInfo('KadeEngine version: ${MainMenuState.kadeEngineVer}');
+
+		#if !FEATURE_DISCORD
+		#if desktop
+		logInfo("DiscordSRV not initialized; not using in this mod."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("DiscordSRV not initialized; not supported on this platform.");
+		#end
+		#end
+
+		#if !FEATURE_WEBM
+		#if windows
+		logInfo("Webm cutscenes is disabled; not using in this mod."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("Webm cutscenes not initialized; not supported on this platform.");
+		#end
+		#end
+
+		#if !FEATURE_MULTITHREADING
+		#if cpp
+		logInfo("Multithreading is disabled."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("Multithreading is disabled; not supported on this platform.");
+		#end
+		#end
+
+		#if !FEATURE_FILESYSTEM
+		#if desktop
+		logInfo("Access to file system is disabled."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("Access to file system is disabled; not supported on this platform.");
+		#end
+		#end
+
+		#if !FEATURE_LUAMODCHART
+		#if windows
+		logInfo("Lua modcharts is disabled; not using in this mod."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("Lua modcharts not initialized; not supported on this platform.");
+		#end
+		#end
+
+		#if !FEATURE_STEPMANIA
+		#if desktop
+		logInfo("StepMania modcharts is disabled; not using in this mod."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("StepMania modcharts not initialized; not supported on this platform.");
+		#end
+		#end
+
+		#if !FEATURE_MODCORE
+		#if desktop
+		logInfo("ModCore is disabled; not using in this mod."); // i.e. disabled in project.xml :)
+		#else
+		logInfo("ModCore not initialized; not supported on this platform.");
+		#end
+		#end
 	}
 
 	/**
