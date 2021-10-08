@@ -202,7 +202,7 @@ class Debug
 
 		logInfo("Debug logging initialized. Hello, developer.");
 
-		logInfo("This is a" + #if debug "DEBUG" #else "RELEASE" #end + "build.");
+		logInfo("This is a " + #if debug "DEBUG" #else "RELEASE" #end + " build.");
 		logInfo('HaxeFlixel version: ${Std.string(FlxG.VERSION)}');
 		logInfo('Friday Night Funkin\' version: ${MainMenuState.gameVer}');
 		logInfo('KadeEngine version: ${MainMenuState.kadeEngineVer}');
