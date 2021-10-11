@@ -752,6 +752,12 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
+		if (FlxG.save.data.middleScroll)
+		{
+			laneunderlayOpponent.alpha = 0;
+			laneunderlay.x = playerStrums.members[0].x - 25;
+		}	
+
 		// startCountdown();
 
 		if (SONG.songId == null)
@@ -1501,8 +1507,7 @@ class PlayState extends MusicBeatState
 			skipText.text = "Press Space to Skip Intro";
 			skipText.size = 30;
 			skipText.color = FlxColor.WHITE;
-			skipText.borderColor = FlxColor.BLACK;
-			skipText.borderSize = 2;
+			skipText.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 2, 1);
 			skipText.cameras = [camHUD];
 			skipText.alpha = 0;
 			FlxTween.tween(skipText, {alpha: 1}, 0.2);
@@ -1788,7 +1793,8 @@ class PlayState extends MusicBeatState
 			{
 				babyArrow.y -= 10;
 				// babyArrow.alpha = 0;
-				FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
+				if (!FlxG.save.data.middleScroll || executeModchart || player == 1)
+					FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
 			}
 
 			babyArrow.ID = i;
@@ -1805,7 +1811,7 @@ class PlayState extends MusicBeatState
 			babyArrow.x += 110;
 			babyArrow.x += ((FlxG.width / 2) * player);
 
-			if (PlayStateChangeables.Optimize)
+			if (PlayStateChangeables.Optimize || (FlxG.save.data.middleScroll && !executeModchart))
 				babyArrow.x -= 320;
 
 			cpuStrums.forEach(function(spr:FlxSprite)
@@ -3012,6 +3018,9 @@ class PlayState extends MusicBeatState
 					}
 					daNote.modAngle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].modAngle;
 				}
+
+				if (!daNote.mustPress && FlxG.save.data.middleScroll && !executeModchart)
+					daNote.alpha = 0;
 
 				if (daNote.isSustainNote)
 				{
