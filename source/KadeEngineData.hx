@@ -114,7 +114,7 @@ class KadeEngineData
 
 		FlxG.save.data.cacheImages = false;
 
-		if (FlxG.save.data.middleScroll == null)
+		if (FlxG.save.data.middlescroll == null)
 			FlxG.save.data.middleScroll = false;
 
 		if (FlxG.save.data.editorBG == null)

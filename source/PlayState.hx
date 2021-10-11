@@ -752,7 +752,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		if (FlxG.save.data.middleScroll)
+		if (FlxG.save.data.middlescroll)
 		{
 			laneunderlayOpponent.alpha = 0;
 			laneunderlay.x = playerStrums.members[0].x - 25;
@@ -1793,7 +1793,7 @@ class PlayState extends MusicBeatState
 			{
 				babyArrow.y -= 10;
 				// babyArrow.alpha = 0;
-				if (!FlxG.save.data.middleScroll || executeModchart || player == 1)
+				if (!FlxG.save.data.middlescroll || executeModchart || player == 1)
 					FlxTween.tween(babyArrow, {y: babyArrow.y + 10, alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
 			}
 
@@ -1812,7 +1812,7 @@ class PlayState extends MusicBeatState
 			babyArrow.x += 110;
 			babyArrow.x += ((FlxG.width / 2) * player);
 
-			if (PlayStateChangeables.Optimize || (FlxG.save.data.middleScroll && !executeModchart))
+			if (PlayStateChangeables.Optimize || (FlxG.save.data.middlescroll && !executeModchart))
 				babyArrow.x -= 320;
 
 			cpuStrums.forEach(function(spr:FlxSprite)
@@ -3020,7 +3020,7 @@ class PlayState extends MusicBeatState
 					daNote.modAngle = strumLineNotes.members[Math.floor(Math.abs(daNote.noteData))].modAngle;
 				}
 
-				if (!daNote.mustPress && FlxG.save.data.middleScroll && !executeModchart)
+				if (!daNote.mustPress && FlxG.save.data.middlescroll && !executeModchart)
 					daNote.alpha = 0;
 
 				if (daNote.isSustainNote)

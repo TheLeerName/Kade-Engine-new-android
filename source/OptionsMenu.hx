@@ -27,12 +27,12 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Gameplay", [
 			new DFJKOption(controls),
 			new DownscrollOption("Toggle making the notes scroll down rather than up."),
+			new MiddlescrollOption("Put your lane in the center or on the right."),
 			new GhostTapOption("Toggle counting pressing a directional input when no arrow is there as a miss."),
 			new Judgement("Customize your Hit Timings. (LEFT or RIGHT)"),
 			#if desktop new FPSCapOption("Change your FPS Cap."),
 			#end
 			new ScrollSpeedOption("Change your scroll speed. (1 = Chart dependent)"),
-			new MiddleScrollOption("Put your lane in the center or on the right."),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
 			new ResetButtonOption("Toggle pressing R to gameover."),
 			new InstantRespawn("Toggle if you instantly respawn after dying."),

@@ -203,6 +203,27 @@ class DownscrollOption extends Option
 	}
 }
 
+class MiddlescrollOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.middlescroll = !FlxG.save.data.middlescroll;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return (FlxG.save.data.middlescroll ? "Middlescroll" : "Rightscroll");
+	}
+}
+
 class GhostTapOption extends Option
 {
 	public function new(desc:String)
@@ -898,27 +919,6 @@ class JudgementCounter extends Option
 	private override function updateDisplay():String
 	{
 		return (FlxG.save.data.judgementCounter ? "Show Judgement Counter" : "No Judgement Counter");
-	}
-}
-
-class MiddleScrollOption extends Option
-{
-	public function new(desc:String)
-	{
-		super();
-		description = desc;
-	}
-
-	public override function press():Bool
-	{
-		FlxG.save.data.middleScroll = !FlxG.save.data.middleScroll;
-		display = updateDisplay();
-		return true;
-	}
-
-	private override function updateDisplay():String
-	{
-		return (FlxG.save.data.middleScroll ? "Middle Scroll" : "Right Side Scroll");
 	}
 }
 
