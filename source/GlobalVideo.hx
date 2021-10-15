@@ -10,8 +10,6 @@ class GlobalVideo
 	public static var isAndroid:Bool = false;
 	public static var daAlpha1:Float = 0.2;
 	public static var daAlpha2:Float = 1;
-	public static var width:Float = 1280;
-	public static var height:Float = 720;
 
 	public static function setVid(vid:VideoHandler):Void
 	{
@@ -50,6 +48,9 @@ class GlobalVideo
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
+
+		var width:Float = GameDimensions.width;
+		var height:Float = GameDimensions.height;
 
 		// trace("AH: " + stageWidth);
 		// trace(width);

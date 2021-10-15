@@ -2,10 +2,10 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<!-- This not for mobile builds --> <app title="Friday Night Funkin': Kade Engine" file="Kade Engine" version="0.2.7.1" main="Main"
+	<!-- This not for mobile builds --> <app title="Friday Night Funkin': Kade Engine" file="Kade Engine" version="1.7.1-prerelease" main="Main"
 	packageName="com.kadedev.kadeengine" package="com.kadedev.kadeengine" company="kadedev" />
 
-	<!-- This for mobile builds --> <app if="mobile" title="FNF: Kade Engine" file="KadeEngine" version="0.2.7.1" main="Main"
+	<!-- This for mobile builds --> <app if="mobile" title="FNF: Kade Engine" file="KadeEngine" version="1.7.1-prerelease" main="Main"
 	packageName="com.kadedev.kadeengine" package="com.kadedev.kadeengine" company="kadedev" />
 <!-- NOTE: If you make a mod or port of mod then be sure to change the package (NOT packageName)
 	otherwise the mod will be replace original kade engine port!
@@ -195,7 +195,7 @@
   <!-- Allowed inputs are mobile,desktop,web,ios,android,windows,mac,linux,switch,html5,cpp,neko,flash,js -->
 
   <!-- Defines whether the Discord client should be enabled. Only works on desktop. -->
-  <!-- <haxedef name="FEATURE_DISCORD"        if="desktop" /> --> <!-- NOT WORKING LMAO (october 7) -->
+  <haxedef name="FEATURE_DISCORD"        if="desktop" />
   <!-- Defines whether WebM videos should be enabled. Enabled only on Windows now. -->
   <haxedef name="FEATURE_WEBM"           if="windows" />
   <!-- Defines whether the Thread class can be used. -->
