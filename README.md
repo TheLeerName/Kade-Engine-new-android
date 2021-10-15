@@ -1,6 +1,8 @@
 # Friday Night Funkin': Kade Engine Android port
 This is a experimental repository for android port of Kade Engine 1.7.1-prerelease ([last added commit from original KE here](https://github.com/KadeDev/Kade-Engine/commit/02e818e5d57ebdd48a59e6e3bb9e7e3648115e59)), [stable repository](https://github.com/TheLeerName/Kade-Engine-android/tree/original)
 
+## [Build instructions](art/docs/building.md)
+
 ![Kade Engine logo](assets/preload/images/KadeEngineLogo.png)
 
 ## Friday Night Funkin': Kade Engine
