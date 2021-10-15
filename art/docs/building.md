@@ -55,7 +55,7 @@ If you are running macOS, you'll need to install Xcode. You can download it from
 Since you already installed `git` in a previous step, we'll use it to clone the repository.
 1. `cd` to where you want to store the source code (i.e. `C:\Users\username\Desktop` or `~/Desktop`)
 2. `git clone https://github.com/KadeDev/Kade-Engine-new-android.git`
-3. `cd` into the source code: `cd Kade-Engine-android`
+3. `cd` into the source code: `cd Kade-Engine-new-android`
 4. (optional) If you want to build a specific version of Kade Engine android, you can use `git checkout` to switch to it (i.e. `git checkout 1.7.1-1.0`)
 - You should **not** do this if you are planning to contribute, as you should always be developing on the latest version.
 
@@ -63,8 +63,8 @@ Since you already installed `git` in a previous step, we'll use it to clone the 
 Finally, we are ready to build.
 
 - Run `lime build <target>`, replacing `<target>` with the platform you want to build to (`windows`, `mac`, `linux`, `html5`) (i.e. `lime build windows`)
-- The build will be in `Kade-Engine-android/export/release/<target>/bin`, with `<target>` being the target you built to in the previous step. (i.e. `Kade-Engine-android/export/release/windows/bin`)
-- Incase you added the -debug flag the files will be inside `Kade-Engine-android/export/debug/<target>/bin`
+- The build will be in `Kade-Engine-new-android/export/release/<target>/bin`, with `<target>` being the target you built to in the previous step. (i.e. `Kade-Engine-new-android/export/release/windows/bin`)
+- Incase you added the -debug flag the files will be inside `Kade-Engine-new-android/export/debug/<target>/bin`
 - Only the `bin` folder is necessary to run the game. The other ones in `export/release/<target>` are not.
 
 ## Troubleshooting
