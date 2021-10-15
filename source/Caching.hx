@@ -27,6 +27,7 @@ import flixel.math.FlxRect;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.text.FlxText;
+import flixel.input.keyboard.FlxKey;
 
 using StringTools;
 
@@ -53,6 +54,10 @@ class Caching extends MusicBeatState
 		PlayerSettings.init();
 
 		KadeEngineData.initSave();
+
+		FlxG.sound.muteKeys = [FlxKey.fromString(FlxG.save.data.muteBind)];
+		FlxG.sound.volumeDownKeys = [FlxKey.fromString(FlxG.save.data.volDownBind)];
+		FlxG.sound.volumeUpKeys = [FlxKey.fromString(FlxG.save.data.volUpBind)];
 
 		FlxG.mouse.visible = false;
 
@@ -83,7 +88,7 @@ class Caching extends MusicBeatState
 		#if FEATURE_FILESYSTEM
 		if (FlxG.save.data.cacheImages)
 		{
-			trace("caching images...");
+			Debug.logTrace("caching images...");
 
 			// TODO: Refactor this to use OpenFlAssets.
 			for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
@@ -92,9 +97,16 @@ class Caching extends MusicBeatState
 					continue;
 				images.push(i);
 			}
+			
+			for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/noteskins")))
+			{
+				if (!i.endsWith(".png"))
+					continue;
+				images.push(i);
+			}
 		}
 
-		trace("caching music...");
+		Debug.logTrace("caching music...");
 
 		// TODO: Get the song list from OpenFlAssets.
 		music = Paths.listSongsToCache();
@@ -110,7 +122,7 @@ class Caching extends MusicBeatState
 		add(kadeLogo);
 		add(text);
 
-		trace('starting caching..');
+		Debug.logTrace("starting caching...");
 
 		#if FEATURE_MULTITHREADING
 		// update thread
@@ -183,7 +195,7 @@ class Caching extends MusicBeatState
 			done++;
 		}
 
-		trace("Finished caching...");
+		Debug.logTrace("Finished caching...");
 
 		loaded = true;
 

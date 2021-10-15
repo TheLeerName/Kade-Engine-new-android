@@ -64,6 +64,9 @@ class OptionsMenu extends MusicBeatState
 			new ShowInput("Display every single input on the score screen."),
 			new Optimization("No characters or backgrounds. Just a usual rhythm game layout."),
 			new BotPlay("Showcase your charts and mods with autoplay.")
+			#if debug ,
+			new DebugMode("Go to the animation debug menu.")])
+			#end
 		]),
 		new OptionCategory("Saves and Data", [
 			#if desktop // new ReplayOption("View saved song replays."),
