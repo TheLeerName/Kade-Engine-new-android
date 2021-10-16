@@ -15,6 +15,9 @@ class KadeEngineData
 		if (FlxG.save.data.downscroll == null)
 			FlxG.save.data.downscroll = false;
 
+		if (FlxG.save.data.middlescroll == null)
+			FlxG.save.data.middlescroll = false;
+
 		if (FlxG.save.data.antialiasing == null)
 			FlxG.save.data.antialiasing = true;
 
@@ -112,10 +115,16 @@ class KadeEngineData
 		if (FlxG.save.data.optimize == null)
 			FlxG.save.data.optimize = false;
 
-		FlxG.save.data.cacheImages = false;
+		#if FEATURE_FILESYSTEM
+		if (FlxG.save.data.caching == null)
+			FlxG.save.data.caching = true;
+		#else
+		// force-off caching option for not desktop platforms
+		FlxG.save.data.caching = false;
+		Main.caching = false;
+		#end
 
-		if (FlxG.save.data.middlescroll == null)
-			FlxG.save.data.middleScroll = false;
+		FlxG.save.data.cacheImages = false;
 
 		if (FlxG.save.data.editorBG == null)
 			FlxG.save.data.editor = false;
@@ -151,6 +160,7 @@ class KadeEngineData
 		KeyBinds.keyCheck();
 
 		Main.watermarks = FlxG.save.data.watermark;
+		Main.caching = FlxG.save.data.caching;
 
 		(cast(Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
 	}

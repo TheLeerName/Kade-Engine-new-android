@@ -138,6 +138,28 @@ class CpuStrums extends Option
 	}
 }
 
+class CachingOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		Main.caching = !Main.caching;
+		FlxG.save.data.caching = Main.caching;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Caching " + (Main.caching ? "On" : "Off");
+	}
+}
+
 class GraphicLoading extends Option
 {
 	public function new(desc:String)

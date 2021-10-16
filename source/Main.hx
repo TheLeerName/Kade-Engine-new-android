@@ -27,6 +27,7 @@ class Main extends Sprite
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	public static var watermarks = true; // Whether to put Kade Engine literally anywhere
+	public static var caching = true;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -87,9 +88,13 @@ class Main extends Sprite
 		// Gotta run this before any assets get loaded.
 		ModCore.initialize();
 
-		#if FEATURE_FILESYSTEM
-		initialState = Caching;
-		#end
+		// Gotta run this to make the caching option work
+		//KadeEngineData.initSave();
+
+		if (caching)
+			#if FEATURE_FILESYSTEM
+			initialState = Caching;
+			#end
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 		addChild(game);
 		#if FEATURE_DISCORD

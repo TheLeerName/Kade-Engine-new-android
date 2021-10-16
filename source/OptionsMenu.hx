@@ -30,14 +30,15 @@ class OptionsMenu extends MusicBeatState
 			new MiddlescrollOption("Put your lane in the center or on the right."),
 			new GhostTapOption("Toggle counting pressing a directional input when no arrow is there as a miss."),
 			new Judgement("Customize your Hit Timings. (LEFT or RIGHT)"),
-			#if desktop new FPSCapOption("Change your FPS Cap."),
+			#if desktop
+			new FPSCapOption("Change your FPS Cap."),
 			#end
 			new ScrollSpeedOption("Change your scroll speed. (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
 			new ResetButtonOption("Toggle pressing R to gameover."),
 			new InstantRespawn("Toggle if you instantly respawn after dying."),
 			// new OffsetMenu("Get a note offset based off of your inputs!"),
-			new CustomizeGameplay("Drag and drop gameplay modules to your prefered positions!")
+			new CustomizeGameplay("Drag and drop gameplay modules to your prefered positions!"),
 		]),
 		new OptionCategory("Appearance", [
 			new NoteskinOption("Change your current noteskin"),
@@ -63,18 +64,22 @@ class OptionsMenu extends MusicBeatState
 			new MissSoundsOption("Toggle miss sounds playing when you don't hit a note."),
 			new ScoreScreen("Show the score screen after the end of a song"),
 			new ShowInput("Display every single input on the score screen."),
+			#if FEATURE_FILESYSTEM
+			new CachingOption("Toggle the caching all in game start."),
+			#end
 			new Optimization("No characters or backgrounds. Just a usual rhythm game layout."),
-			new BotPlay("Showcase your charts and mods with autoplay.")
-			#if debug ,
-			new DebugMode("Go to the animation debug menu.")])
+			new BotPlay("Showcase your charts and mods with autoplay."),
+			#if debug
+			new DebugMode("Go to the animation debug menu.")]),
 			#end
 		]),
 		new OptionCategory("Saves and Data", [
-			#if desktop // new ReplayOption("View saved song replays."),
+			#if desktop
+			// new ReplayOption("View saved song replays."),
 			#end
 			new ResetScoreOption("Reset your score on all songs and weeks. This is irreversible!"),
 			new LockWeeksOption("Reset your story mode progress. This is irreversible!"),
-			new ResetSettings("Reset ALL your settings. This is irreversible!")
+			new ResetSettings("Reset ALL your settings. This is irreversible!"),
 		])
 	];
 

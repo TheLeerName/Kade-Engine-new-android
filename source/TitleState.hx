@@ -59,12 +59,13 @@ class TitleState extends MusicBeatState
 			Debug.logTrace("We loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets into the default library");
 		}
 
-		#if FEATURE_FILESYSTEM
 		#if !cpp
-		FlxG.save.bind('funkin', 'ninjamuffin99');
-		KadeEngineData.initSave();
-		Highscore.load();
-		#end
+		if (Main.caching)
+		{
+			FlxG.save.bind('funkin', 'ninjamuffin99');
+			KadeEngineData.initSave();
+			Highscore.load();
+		}
 		#end
 		PlayerSettings.init();
 
@@ -76,12 +77,13 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		#if !FEATURE_FILESYSTEM
+		if (!Main.caching)
+		{
 		// i replace this because game crashing if initialState = TitleState
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		KadeEngineData.initSave();
 		Highscore.load();
-		#end
+		}
 
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
@@ -90,12 +92,15 @@ class TitleState extends MusicBeatState
 		FlxG.switchState(new ChartingState());
 		clean();
 		#else
-		#if !FEATURE_FILESYSTEM
+		if (!Main.caching)
+		{
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			startIntro();
 		});
-		#else
+		}
+		else
+		{
 		#if !cpp
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
@@ -104,7 +109,7 @@ class TitleState extends MusicBeatState
 		#else
 		startIntro();
 		#end
-		#end
+		}
 		#end
 	}
 
