@@ -53,6 +53,10 @@ class Caching extends MusicBeatState
 
 		KadeEngineData.initSave();
 
+		// force-on fullscreen if this option on
+		if (FlxG.save.data.fullscreen)
+			FlxG.fullscreen = true;
+
 		// It doesn't reupdate the list before u restart rn lmao
 		NoteskinHelpers.updateNoteskins();
 

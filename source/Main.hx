@@ -88,11 +88,9 @@ class Main extends Sprite
 		// Gotta run this before any assets get loaded.
 		ModCore.initialize();
 
-		// Gotta run this to make the caching option work
-		//KadeEngineData.initSave();
-
 		if (caching)
 			#if FEATURE_FILESYSTEM
+			// force-off caching option for not desktop platforms
 			initialState = Caching;
 			#end
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);

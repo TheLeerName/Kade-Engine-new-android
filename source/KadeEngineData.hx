@@ -21,6 +21,15 @@ class KadeEngineData
 		if (FlxG.save.data.antialiasing == null)
 			FlxG.save.data.antialiasing = true;
 
+		#if desktop
+		if (FlxG.save.data.fullscreen == null)
+			FlxG.save.data.fullscreen = false;
+		#else
+		// force-on caching option for not desktop platforms
+		FlxG.save.data.fullscreen = true;
+		FlxG.fullscreen = true;
+		#end
+
 		if (FlxG.save.data.missSounds == null)
 			FlxG.save.data.missSounds = true;
 

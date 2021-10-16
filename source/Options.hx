@@ -748,6 +748,28 @@ class Optimization extends Option
 	}
 }
 
+class Fullscreen extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.fullscreen = !FlxG.fullscreen;
+		FlxG.save.data.fullscreen = FlxG.fullscreen;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Fullscreen " + (FlxG.fullscreen ? "ON" : "OFF");
+	}
+}
+
 class NPSDisplayOption extends Option
 {
 	public function new(desc:String)
