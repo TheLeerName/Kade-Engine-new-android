@@ -1,3 +1,6 @@
+# bruh why you guys forking this shit, just use the [jigsaw's port](https://github.com/jigsaw-4277821/PE-0.5.2h-Android)
+# i not interested to update this repo, so i archive it <3
+
 # Friday Night Funkin': Kade Engine Android port
 This is a experimental repository for android port of Kade Engine 1.7.1-prerelease ([last added commit from original KE here](https://github.com/KadeDev/Kade-Engine/commit/02e818e5d57ebdd48a59e6e3bb9e7e3648115e59)), [stable repository](https://github.com/TheLeerName/Kade-Engine-android/tree/original)
 
